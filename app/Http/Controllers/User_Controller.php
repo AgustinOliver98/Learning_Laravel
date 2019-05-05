@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class User_Controller extends Controller
 {
@@ -10,7 +12,7 @@ class User_Controller extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
-        $users= ['Alonso','Napadensky','Oliver','Ostorero'];
+       $users=User::all();
 
         $title = "listado de usuarios";
         return view('users.index',compact('title','users'));
