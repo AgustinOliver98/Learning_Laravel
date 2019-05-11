@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Profession;
+use App\Profession;
 use Illuminate\Database\Seeder;
 
 class ProfessionSeeder extends Seeder
@@ -16,6 +16,9 @@ class ProfessionSeeder extends Seeder
             'title' => 'Back-End Developer',
         ]);
 
+        Profession::create([
+            'title'=> 'Front-End Developer'
+        ]);
 
 
     }

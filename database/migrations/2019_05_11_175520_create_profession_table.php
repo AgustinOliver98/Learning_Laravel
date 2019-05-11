@@ -15,6 +15,7 @@ class CreateProfessionTable extends Migration
     {
         Schema::create('profession', function (Blueprint $table) {
             $table->increments('id');
+
             $table->string('title');
             $table->timestamps();
         });
@@ -27,6 +28,6 @@ class CreateProfessionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profession');
+        Schema::dropIfExists('professions');
     }
 }

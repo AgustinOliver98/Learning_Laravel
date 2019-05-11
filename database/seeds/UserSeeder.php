@@ -1,7 +1,7 @@
 <?php
 
 use App\User;
-use App\Models\Profession;
+use App\Profession;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         User::create(['name'=> 'Agustin Oliver',
             'email'=> 'afidjs@gmail.com',
             'password'=> bcrypt('laravel'),
-            'profession_id'=>$id_profession
+            'id_profession'=>$id_profession
         ]);
     }
 }

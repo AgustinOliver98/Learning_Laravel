@@ -17,7 +17,21 @@ namespace Illuminate\Support\Facades {
      * 
      *
      * @see \Illuminate\Foundation\Application
-     */ 
+     *
+     *
+     */
+    /**
+     * An Eloquent Model: 'Post'
+     *
+     * @property integer $id
+     * @property integer $author_id
+     * @property string $title
+     * @property string $text
+     * @property \Illuminate\Support\Carbon $created_at
+     * @property \Illuminate\Support\Carbon $updated_at
+     * @property-read \User $author
+     * @property-read \Illuminate\Database\Eloquent\Collection|\Comment[] $comments
+     */
     class App {
         
         /**

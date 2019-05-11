@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-/** @mixin \Eloquent */
 
 class Profession extends Model
 {
+
+
+     protected $table= 'profession';
 
 }
