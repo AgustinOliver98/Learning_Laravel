@@ -14,12 +14,16 @@ class User_Controller extends Controller
     public function index(){
        $users=User::all();
 
+
         $title = "listado de usuarios";
         return view('users.index',compact('title','users'));
     }
 
     public function show($id){
-       return "el id del usuario es: {$id}";
+        $users = User::findOrFail($id);
+
+
+       return view('users.show', compact('users'));
 
     }
 

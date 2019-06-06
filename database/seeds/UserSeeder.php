@@ -19,5 +19,8 @@ class UserSeeder extends Seeder
             'password'=> bcrypt('laravel'),
             'id_profession'=>$id_profession
         ]);
+
+        factory(User::class,20)->create();
+
     }
 }

@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title> @yield('title')- Curso-Styde</title>
+    <title> @yield('title')-Curso-Styde</title>
 
     <link rel="icon" href="{{asset('public/favicon.ico')}}">
 
@@ -55,11 +55,6 @@
             @yield ('content')
              </div>
 
-            <div class="col-sm-1">
-                @section ('sidebar')
-                    <h2>Barra Lateral </h2>
-                @show
-                    </div>
         </div>
     </div>
 </main>

@@ -2,36 +2,49 @@
 
 namespace Tests\Feature;
 
+use App\User;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 class User_Test extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     *
-     */
+
+    use RefreshDatabase;
+
+    /**@test**/
     public function test_it_loads_the_users_list_page()
     {
+
+       factory(User::class)->create([
+           'name'=> 'pepito'
+       ]);
+
         $this->withExceptionHandling();
 
         $this->get('/usuarios')
             ->assertStatus(200)
-            -> assertSee("listado de usuarios");
+            ->assertSee('listado de usuarios')
+            ->assertSee('pepito');
+
+        ob_end_flush();
     }
 
+
+    /**@test**/
     public function test_it_show_user_id(){
 
+        $user=factory(User::class)->create([
+            'name'=>'Agustin Oliver'
+        ]);
         $this->withExceptionHandling();
 
-        $this->get('/usuarios/5')
+        $this->get('/usuarios/'.$user->id)
              ->assertStatus(200)
-            ->assertSee('5');
+            ->assertSee('Agustin Oliver');
     }
 
+    /**@test**/
     public function test_edit_user(){
         $this->withExceptionHandling();
 
