@@ -53,4 +53,13 @@ class User_Test extends TestCase
             ->assertSee("Editando ID: 5");
 
     }
+
+    /**@test**/
+
+    public function  test_404_if_user_is_not_found(){
+
+        $this->get('/usuarios/10090')
+        ->assertStatus(404)
+        ->assertSee('Pagina no encontrada');
+    }
 }

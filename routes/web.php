@@ -13,12 +13,13 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('user');
 
 
-Route::get('/usuarios','User_Controller@index');
+Route::get('/usuarios','User_Controller@index')->name('user.index');
 
 Route::get('/usuarios/{id}/edit','User_Controller@edit')->where('id','[0-9]+');
 
 Route::get('/usuarios/{id}','User_Controller@show')
-    ->where('id','[0-9]+');
+    ->where('id','[0-9]+')
+    ->name('user.show');

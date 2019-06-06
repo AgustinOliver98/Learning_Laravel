@@ -47,11 +47,10 @@
 </header>
 
 <!-- Begin page content -->
-<main role="main" class="container">
+<main role="main" class="container text-center">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-2">
+    <div class="container col-lg-4">
+        <div class="">
             @yield ('content')
              </div>
 

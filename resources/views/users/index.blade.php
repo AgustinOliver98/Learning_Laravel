@@ -4,17 +4,14 @@
 @section ('content')
 
 
-        <h1>{{$title}}</h1>
+               <ul class="list-group ">
+                   <li class="list-group-item active">{{$title}}</li>
+                   @foreach ($users as $user)
 
+                       <li class="list-group-item"><a href="{{route('user.show', ['id'=>$user])}}">{{$user->name}}</a></li>
+                   @endforeach
 
-            <ul>
-
-                @foreach ($users as $user)
-
-                    <li>{{$user->name}}</li>
-
-                @endforeach
-            </ul>
+               </ul>
 
 
 @endsection
