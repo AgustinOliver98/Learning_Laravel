@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
+
+
+
 
 class User_Controller extends Controller
 {
@@ -29,5 +32,31 @@ class User_Controller extends Controller
 
     public function edit($id){
         return "Editando ID: {$id}";
+    }
+
+    public function create(){
+        return view('users.create');
+    }
+
+
+    public function store(){
+
+        $data = request()->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required'
+            ],[
+                'name.required' => 'El campo nombre es obligatorio'
+
+        ]);
+
+
+        User::create([
+           'name'=>$data['name'],
+           'email'=>$data['email'],
+           'password'=>bcrypt($data['password']),
+       ]);
+
+       return redirect()->route('user.index');
     }
 }

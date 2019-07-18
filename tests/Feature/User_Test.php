@@ -7,18 +7,19 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 
+
 class User_Test extends TestCase
 {
 
     use RefreshDatabase;
 
-    /**@test**/
+    /**@test* */
     public function test_it_loads_the_users_list_page()
     {
 
-       factory(User::class)->create([
-           'name'=> 'pepito'
-       ]);
+        factory(User::class)->create([
+            'name' => 'pepito'
+        ]);
 
         $this->withExceptionHandling();
 
@@ -31,21 +32,23 @@ class User_Test extends TestCase
     }
 
 
-    /**@test**/
-    public function test_it_show_user_id(){
+    /**@test* */
+    public function test_it_show_user_id()
+    {
 
-        $user=factory(User::class)->create([
-            'name'=>'Agustin Oliver'
+        $user = factory(User::class)->create([
+            'name' => 'Agustin Oliver'
         ]);
         $this->withExceptionHandling();
 
-        $this->get('/usuarios/'.$user->id)
-             ->assertStatus(200)
+        $this->get('/usuarios/' . $user->id)
+            ->assertStatus(200)
             ->assertSee('Agustin Oliver');
     }
 
-    /**@test**/
-    public function test_edit_user(){
+    /**@test* */
+    public function test_edit_user()
+    {
         $this->withExceptionHandling();
 
         $this->get('/usuarios/5/edit')
@@ -54,12 +57,48 @@ class User_Test extends TestCase
 
     }
 
-    /**@test**/
+    /**@test* */
 
-    public function  test_404_if_user_is_not_found(){
+    public function test_404_if_user_is_not_found()
+    {
 
         $this->get('/usuarios/10090')
-        ->assertStatus(404)
-        ->assertSee('Pagina no encontrada');
+            ->assertStatus(404)
+            ->assertSee('Pagina no encontrada');
+    }
+
+
+    public function test_creates_a_new_user()
+    {
+        $this->post('usuarios/crear', [
+            'name' => 'Agustin',
+            'email' => 'aoli@styde.com',
+            'password' => '1432'
+
+        ])->assertRedirect(route('user.index'));
+
+        $this->assertDatabaseHas('users', [
+            'name' => 'Agustin',
+            'email' => 'aoli@styde.com',
+
+        ]);
+    }
+
+    /**@test* */
+    public function test_name_is_required()
+    {
+
+        $this->from('usuarios/nuevo')
+            ->post('usuarios/crear', [
+                'name' => '',
+                'email' => 'aoli@styde.com',
+                'password' => '1432'
+            ])
+            ->assertRedirect('usuarios/nuevo')
+            ->assertSessionHasErrors(['name']);
+        $this->assertDatabaseMissing('users', [
+            'email' => 'aoli@styde.com',
+        ]);
+
     }
 }
