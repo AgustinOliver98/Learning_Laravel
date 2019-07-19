@@ -73,7 +73,7 @@ class User_Test extends TestCase
         $this->post('usuarios/crear', [
             'name' => 'Agustin',
             'email' => 'aoli@styde.com',
-            'password' => '1432'
+            'password' => '143256'
 
         ])->assertRedirect(route('user.index'));
 
@@ -100,5 +100,17 @@ class User_Test extends TestCase
             'email' => 'aoli@styde.com',
         ]);
 
+    }
+    /**@test**/
+    public function test_it_loads_edit_page(){
+        $user=factory(User::class)->create();
+
+        $this->get("usuarios/{$user->id}/editar")
+        ->assertStatus(200)
+        ->assertViewIs('users.edit')
+        ->assertSee('Editar Usuario')
+        ->assertViewHas('user',function($viewUser)use ($user){
+            return $viewUser->id === $user->id;
+        });
     }
 }
