@@ -1,0 +1,53 @@
+[33mcommit fcd1729a7613b085d74163f9af8d0ae7379575c2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Agustin Oliver <agustinoliver1998@gmail.com>
+Date:   Fri Jul 19 00:44:44 2019 -0300
+
+    form edit user
+
+[33mcommit c70141be1aa58d0d8696c5922b66208e17007fca[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Agustin Oliver <agustinoliver1998@gmail.com>
+Date:   Thu Jul 18 01:23:14 2019 -0300
+
+     form for users and update to 5.6 version
+
+[33mcommit 3ba9e79d2ed346009c07d02dcbda9c837cbf3add[m
+Author: Agustin Oliver <agustinoliver1998@gmail.com>
+Date:   Fri Jul 5 20:13:10 2019 -0300
+
+     creates user form and add test
+
+[33mcommit e7431ab808ceefda75b5cc4244c6990e9b9d2f08[m
+Author: Agustin Oliver <agustinoliver1998@gmail.com>
+Date:   Thu Jun 6 18:20:18 2019 -0300
+
+    Added a 404 page
+
+[33mcommit 5c5360883f23faa0b2c9b51361d6404a914e5aa3[m
+Author: Agustin Oliver <agustinoliver1998@gmail.com>
+Date:   Thu Jun 6 15:46:27 2019 -0300
+
+    users details
+
+[33mcommit 4b570548862bcfcd68fcee4f02c5c3ff5080fd60[m
+Author: Agustin Oliver <agustinoliver1998@gmail.com>
+Date:   Sat May 11 17:10:39 2019 -0300
+
+    Fixed bugs with migrations,Seeders and Models
+
+[33mcommit fd8c350bd02dfedd5c8b2fd53c9abe3bf67b008f[m[33m ([m[1;31morigin/user[m[33m)[m
+Author: Agustin Oliver <agustinoliver1998@gmail.com>
+Date:   Sun May 5 11:57:46 2019 -0300
+
+    Problems with Migrations
+
+[33mcommit b30160c6c5a9dfc30ad46db0e36e865e64a1a07c[m
+Author: Agustin Oliver <agustinoliver1998@gmail.com>
+Date:   Fri May 3 22:38:52 2019 -0300
+
+    Learning DataBase Connection and Querys
+
+[33mcommit c1d58146fdf979b963499a544c1729bfd93c38f2[m
+Author: Agustin Oliver <agustinoliver1998@gmail.com>
+Date:   Fri May 3 15:34:48 2019 -0300
+
+    First Commit

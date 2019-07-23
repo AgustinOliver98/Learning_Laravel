@@ -113,4 +113,63 @@ class User_Test extends TestCase
             return $viewUser->id === $user->id;
         });
     }
+
+    /**@test**/
+
+    public function test_it_updates_user_data(){
+        $user=factory(User::class)->create();
+        $this->withoutExceptionHandling();
+        $this->put("usuarios/{$user->id}",[
+           'name'=>'Agustin',
+           'email'=>'pepit@gmil.com',
+            'password'=>'123132'
+        ])->assertRedirect("usuarios/{$user->id}");
+
+        $this->assertCredentials([
+            'name'=>'Agustin',
+            'email'=>'pepit@gmil.com',
+            'password'=>'123132'
+        ]);
+    }
+        /**@test**/
+    public function test_name_in_update_is_required()
+    {
+        $user=factory(User::class)->create();
+        $this->from("usuarios/{$user->id}/editar")
+            ->put("usuarios/{$user->id}", [
+                'name' => '',
+                'email' => 'aoli@styde.com',
+                'password' => '1432'
+            ])
+            ->assertRedirect("usuarios/{$user->id}/editar")
+            ->assertSessionHasErrors(['name']);
+        $this->assertDatabaseMissing('users', [
+            'email' => 'aoli@styde.com',
+        ]);
+
+    }
+
+    /**@test**/
+    public function test_password_in_update_is_optional(){
+
+
+        $oldpassword='123456';
+        $user=factory(User::class)->create([
+            'password'=>bcrypt($oldpassword)
+            ]);
+
+        $this->from("usuarios/{$user->id}/editar")
+            ->put("usuarios/{$user->id}", [
+                'name' => 'agustin',
+                'email' => 'aoli@styde.com',
+                'password' =>''
+            ])
+            ->assertRedirect("usuarios/{$user->id}");
+            $this->assertCredentials([
+                'name' => 'agustin',
+                'email' => 'aoli@styde.com',
+                'password'=>$oldpassword //important!!!
+        ]);
+
+    }
 }

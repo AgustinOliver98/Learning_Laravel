@@ -24,8 +24,10 @@ Route::get('/usuarios/{id}','User_Controller@show')
     ->where('id','[0-9]+')
     ->name('user.show');
 
-route::get('/usuarios/nuevo', 'User_controller@create');
+route::get('/usuarios/nuevo', 'User_controller@create')->name('user.create');
 
 route::post('/usuarios/crear', 'User_Controller@store')->name('store');
 
 route::get('/usuarios/{user}/editar','User_Controller@editdata')->name('user.edit');
+
+route::put('usuarios/{user}','User_Controller@updatedata');
